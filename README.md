@@ -1,5 +1,9 @@
 # Azure Architectures recreated with Terraform
 
+I recreate Azure architectures using Infrastructure as Code (IaC) to practice designing and building for the cloud.
+
+This README provides a brief description of each architecture, along with the lessons learned while building it. The corresponding Terraform code can be found in the respective directories.
+
 ## Run a Linux VM on Azure
 
 [![Architecture of a Linux VM accessible only via Azure Bastion](img/linux-vm-single-vm-diagram.svg "Linux VM on Azure Architecture")](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/linux-vm)
