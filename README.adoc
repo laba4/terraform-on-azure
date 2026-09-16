@@ -1,0 +1,18 @@
+:sectnums:
+:sectnumlevels: 1
+:toc:
+
+= Azure Architectures recreated with Terraform
+
+== Run a Linux VM on Azure
+
+.Linux VM accessible only via Azure Bastion
+image::img/linux-vm-single-vm-diagram.svg[Run a Linux VM on Azure]
+
+=== Architecture Description
+
+The Linux VM has no public IP address and can only be accessed via Azure Bastion. The bastion host is attached to a a public IP address and can be used as a jump box to SSH into the VM. The NAT Gateway allows the VM to connect outbound to the internet while remaining in a fully private subnet. 
+
+=== Lessons Learned
+
+* Azure Bastion subnet must be `/26` or larger
