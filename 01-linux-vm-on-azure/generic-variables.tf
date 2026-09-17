@@ -1,4 +1,4 @@
-variable "business_divsion" {
+variable "business_division" {
   type = string
 }
 

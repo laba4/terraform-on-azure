@@ -1,10 +1,10 @@
-resource "azurerm_linux_virtual_machine" "linuxvm" {
-  name                  = "${local.resource_name_prefix}-linuxvm"
+resource "azurerm_linux_virtual_machine" "vm" {
+  name                  = "vm-${local.resource_name_prefix}"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
   size                  = "Standard_D2s_v3"
   admin_username        = "azureuser"
-  network_interface_ids = [azurerm_network_interface.linuxvm_nic.id]
+  network_interface_ids = [azurerm_network_interface.vm_nic.id]
 
   admin_ssh_key {
     username   = "azureuser"
