@@ -14,4 +14,7 @@ The Linux VM has no public IP address and can only be accessed via Azure Bastion
 
 ### Lessons Learned
 
-- Azure Bastion subnet must be `/26` or larger
+- Azure Bastion subnet must be `/26` or larger and it's name must be exactly **AzureBastionSubnet**
+- No NSG is required for the AzureBastionSubnet, because it's a managed service and you have to use the Azure portal to use it
+- When using a Linux VM (IaaS) as a jump host, a NSG needs to allow SSH traffic
+- Azure Bastion service is more expensive than a Linux VM jump host
