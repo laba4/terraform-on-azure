@@ -1,2 +1,8 @@
 *.html
 *.pdf
+.env
+*terraform*
+*.tfvars
+*.tfstate
+*.tfstate.*
+*.tfbackend
