@@ -6,3 +6,5 @@
 *.tfstate
 *.tfstate.*
 *.tfbackend
+__pycache__
+*.db
