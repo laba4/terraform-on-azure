@@ -27,6 +27,18 @@ The Linux VM has no public IP address and can only be accessed via Azure Bastion
 
 A Python FastAPI backend is hosted on an Azure App Service managed instance. The backend connects to an Azure SQL Database instance (PaaS) to persist data. The authentication between the App Service and the database is done secretless through a managed identity managed by Azure. Entra ID Easy Auth provides authentication for the app. Several additional services are deployed for monitoring the application.
 
+### Architecture Edits
+
+While building this, I made a few architectural changes worth noting. I switched to a consumption-based Container App Environment workload profile. This option is cheaper than running the app on an App Service instance, because App Services have a fixed monthly cost based on the chosen SKU. I also haven't implemented Easy Auth yet. Instead of a managed identity the Container App currently connects to the database using a connection string. I implemented a Private Endpoint so the database can be reached from the Container App Environment over the Azure backbone. For security reasons I disabled public internet access to the database entirely.
+
+### Lessons Learned
+
+- It's cheaper to deploy a Docker image as a Container App, because unlike App Services, the billing is consumption-based
+- If you don't use a CI/CD pipeline to deploy the infrastructure, you have to manually to push the image to the Azure Container Registry before creating the Container App
+- Although I hold a CCNA certification, Azure Cloud Networking is still confusing to me, especially DNS Zones and Private Endpoints
+- The [Container App Environment's default Workload profile is Consumption](https://learn.microsoft.com/en-us/azure/container-apps/custom-virtual-networks?tabs=workload-profiles-env#subnet). The minimum subnet size required for virtual network integration is /27. You must delegate the subnet to Microsoft.App/environments.
+- I just realized the state file stores some passwords in plain text. Definitely a security concern worth addressing. Using a Managed Identity would remove the need for database credentials altogether. Access to the tfstate Blob Container needs to be locked down via RBAC.
+
 ## Useful Resources
 
 - The **Cloud Adoption Framework** provides [official naming convention advice](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
