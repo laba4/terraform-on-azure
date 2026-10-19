@@ -43,3 +43,7 @@ While building this, I made a few architectural changes worth noting. I switched
 
 - The **Cloud Adoption Framework** provides [official naming convention advice](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
 - [Abbreviation recommendations for Azure resources](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+
+## Project on hold
+
+As of October 14, 2026, this project is on hold, because I now use AWS and not Azure anymore.
